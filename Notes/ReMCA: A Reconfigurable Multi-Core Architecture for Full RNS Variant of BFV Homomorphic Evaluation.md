@@ -41,5 +41,19 @@ Total of 40 PEs, in which each row corresponds to one channel and each channel c
 Reconfigurable PE: INTT,NTT,MULT
 
 Barrett modular multiplier: modular multiplier, modular reduction
-### Property:1
+
+1.PE not onlu supports the functions with the variable modulus, but also supports the summation of modular multiplication
+
+2.By merging the multiplicative factor 1/2 into the twiddle
+factors, the reconfigurable PE eliminates the multiplication of
+1/2 in the subtraction path and improves the performance of
+PE unit.
+
 $\frac{x}{2}= (2\lfloor \frac{x}{2}\rfloor+1)\frac{q+1}{2}=\lfloor \frac{x}{2}\rfloor(q+1)+\frac{q+1}{2}=\lfloor \frac{x}{2}\rfloor+\frac{q+1}{2}(modq)$
+
+3.The Barrett modular multiplier we presented employs a reconfigurable architecture and avoids the needs of other computing units for ReMCA.
+## Confilct-Free Memory Access for NTT/INTT
+![avatar](/Pic/Data%20memory%20access%20pattern.png)
+Bank is dual-port pattern(could select the bank read port based on PEs)
+
+For the bit-reversal operation, could change the address mapping pattern to avoid timing-consuming or memory-consuming.
