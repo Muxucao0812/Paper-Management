@@ -23,6 +23,13 @@ the size of the larger modulus Q to at least 288-bit
 ---
 ## Algorithm And Approach
 ### Unified Low-Complexity NTT/INTT
+
+
+![trump.jpg](https://view.moezx.cc/images/2018/05/27/trump.jpg#width-full)
+
+ <img src="https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/Unified%20Low-Complexity%20CG%20NTT%20INTT.png" width = "300" height = "200" alt="图片名称" align=center />
+ 
+ 
 ![30%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/Unified%20Low-Complexity%20CG%20NTT%20INTT.png)
  It is a algorithm can control the butterfly unit to do NTT or INTT, decrease the complexity of memory access.
 
