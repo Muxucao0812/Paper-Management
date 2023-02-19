@@ -27,3 +27,17 @@ paginate: true
 ---
 ### Background
 #### FHE programming model and operations
+- element-wise
+- addition (mod t)
+- multiplication (mod t)
+- a small set of particular vector permutations.
+
+---
+#### BGV implementation overview
+Data types:
+$a = a_0+a_1x+...+a_{N-1}x^{N-1}\in R_t$
+Each plaintext is encrypted into a ciphertext consisting of two polynomials of N integer coefficients modulo some $Q≫t$. Each ciphertext polynomial is a member of $R_Q$.
+
+Encrtyption and decryption:
+secret key: $s \in R_Q$.To encrypt a plaintext $m∈R_t$,one samples a uniformly random $a ∈ R_Q$ , an error (or noise) $e ∈ R_Q$ with small entries, and computes the ciphertext ct as
+$ct =(a,b=as+te+m)$
