@@ -50,14 +50,14 @@ Chinese remainder theorem(https://zh.wikipedia.org/zh-hans/%E4%B8%AD%E5%9B%BD%E5
 
 ---
 ### Algorithm And Approach
-#### RNS Basis
+#### RNS Basis Scaling
 ![bg right 100%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/ReMCA_Pic/RNS%20Basis%20Scaling.png?raw=true)
 
-After complete the RNS basis extension, the ciphertext multiplication is performed in the RNS of R Q in parallel. Then,the extended tensored ciphertexts need to be scaled down
+After complete the RNS basis extension, the ciphertext multiplication is performed in the RNS of $R_Q$ in parallel. Then,the extended tensored ciphertexts need to be scaled down
 
 ---
 ### Algorithm And Approach
-#### RNS Basis
+#### RNS Basis Scaling
 ![bg right 100%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/ReMCA_Pic/RNS%20Basis%20Scaling.png?raw=true)
 ###### $\lfloor t/q*A_i \rceil modq_j=$
 
