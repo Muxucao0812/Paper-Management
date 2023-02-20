@@ -215,5 +215,44 @@ its result. We can often replace a dead value.
 
 ---
 #### Four-step NTT unit
-![bg 100%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/F1_Pic/Transpose%20unit%20(right)%20and%20its%20component%20quadrant-%0Aswap%20unit%20(left).png?raw=true)
-![bg 100%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/F1_Pic/Transpose%20unit.png?raw=true)
+![bg right 100%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/F1_Pic/Four-step%20NTT%20unit.png?raw=true)
+
+---
+#### Optimized modular multiplier
+![bg right 100%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/F1_Pic/Area%2C%20power%2C%20and%20delay%20of%20modular%20multipliers.png?raw=true)
+
+---
+### F1 IMPLEMENTATION
+![bg 45%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/F1_Pic/Area%20and%20Thermal%20Design%20Power%20(TDP)%20of%20F1%2C%20and%0Abreakdown%20by%20component.png?raw=true)
+
+---
+### EXPERIMENTAL METHODOLOGY
+- Modeled system: 
+a cycle-accurate simulator to execute F1 programs
+activity-level energies from RTL synthesis to produce energy breakdowns
+- Benchmarks:
+Logistic regression: uses the HELR algorithm:256 features, 256  samples, depth L =16
+Neural network:LoLa-MNIST,LoLa-CIFAR
+DB Lookup:A BGV-encrypted query string is used to traverse an encrypted key-value store and return the corresponding value.
+
+---
+- Bootstrapping: 
+BGV: Sheriff and Peikert’s algorithm
+CKKS: non-packed CKKS bootstrapping
+- Baseline systems:
+F1 with a CPU system running the baseline programs (a 4-core, 8-thread, 3.5 GHz Xeon E3-1240v5)
+
+---
+### EVALUATION
+#### Performance
+##### Benchmarks
+![bg 50%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/F1_Pic/Performance%20of%20F1%20and%20CPU%20on%20full%20FHE%20bench-%0Amarks:%20execution%20times%20in%20milliseconds%20and%20F1%E2%80%99s%20speedup.png?raw=true)
+
+---
+##### Microbenchmarks
+![bg 90%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/F1_Pic/Performance%20on%20microbenchmarks.png?raw=true)
+
+---
+#### Performance
+##### Data movement&Power consumption
+![bg 35%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/F1_Pic/Perbenchmark%20breakdowns.png?raw=true)
