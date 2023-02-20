@@ -200,13 +200,21 @@ issuing an instruction, we must ensure that there is space to store
 its result. We can often replace a dead value.
 
 ---
-#### Cycle-level scheduling
-
+#### Cycle-level scheduling(constrained by its input schedule's off-chip data movement)
+- distribute comptation across clusters and manage reg file and on-chip transfer
+- add loads or stores in this stage
+- move loads to their earliest possible issue cycle to avoid stalls on missing operands
 ---
 ### FUNCTIONAL UNITS
 #### Automorphism unit
-![bg 100%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/F1_Pic/Applying%20%CF%833%20on%20an%20RNS%20polynomial.png?raw=true)
-![bg 50%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/F1_Pic/Automorphism%20unit.png?raw=true)
+how automorphism σ3 is applied to a residue polynomial with N = 16 and E = 4 elements/cycle.
+![bg right 100%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/F1_Pic/Applying%20%CF%833%20on%20an%20RNS%20polynomial.png?raw=true)
+
+---
+#### Automorphism unit
+![bg right 50%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/F1_Pic/Automorphism%20unit.png?raw=true)
+
+Given a residue polynomial of N=G · E elements, the automorphism unit first transpose applies the column permutation to each E-element input. Then, it feeds this to a transpose unit that reads in the whole residue polynomial interpreting it as a G × E matrix, and produces its transpose E × G. 
 
 ---
 #### Transpose unit
@@ -215,15 +223,15 @@ its result. We can often replace a dead value.
 
 ---
 #### Four-step NTT unit
-![bg right 100%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/F1_Pic/Four-step%20NTT%20unit.png?raw=true)
+![bg 80%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/F1_Pic/Four-step%20NTT%20unit.png?raw=true)
 
 ---
 #### Optimized modular multiplier
-![bg right 100%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/F1_Pic/Area%2C%20power%2C%20and%20delay%20of%20modular%20multipliers.png?raw=true)
+![bg 80%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/F1_Pic/Area%2C%20power%2C%20and%20delay%20of%20modular%20multipliers.png?raw=true)
 
 ---
 ### F1 IMPLEMENTATION
-![bg 45%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/F1_Pic/Area%20and%20Thermal%20Design%20Power%20(TDP)%20of%20F1%2C%20and%0Abreakdown%20by%20component.png?raw=true)
+![bg 40%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/F1_Pic/Area%20and%20Thermal%20Design%20Power%20(TDP)%20of%20F1%2C%20and%0Abreakdown%20by%20component.png?raw=true)
 
 ---
 ### EXPERIMENTAL METHODOLOGY
@@ -253,6 +261,15 @@ F1 with a CPU system running the baseline programs (a 4-core, 8-thread, 3.5 GHz 
 ![bg 90%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/F1_Pic/Performance%20on%20microbenchmarks.png?raw=true)
 
 ---
-#### Performance
-##### Data movement&Power consumption
-![bg 35%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/F1_Pic/Perbenchmark%20breakdowns.png?raw=true)
+#### Architectural analysis
+##### Data movement,Power consumption,Utilization over time
+![bg 70%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/F1_Pic/Perbenchmark%20breakdowns.png?raw=true)
+![bg 100%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/F1_Pic/Functional%20unit%20and%20HBM%20utilization.png?raw=true)
+
+---
+#### Sensitivity studies
+![bg 50%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/F1_Pic/Speedups%20of%20F1%0Aover%20alternate%20configurations.png?raw=true)
+
+---
+#### Scalablity
+![bg 50%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/F1_Pic/Performance%20vs.%20area%20across%20F1%20configurations.png?raw=true)
