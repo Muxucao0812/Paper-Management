@@ -210,5 +210,10 @@ its result. We can often replace a dead value.
 
 ---
 #### Transpose unit
-![bg 100%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/F1_Pic/Applying%20%CF%833%20on%20an%20RNS%20polynomial.png?raw=true)
-![bg 50%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/F1_Pic/Automorphism%20unit.png?raw=true)
+![bg 100%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/F1_Pic/Transpose%20unit%20(right)%20and%20its%20component%20quadrant-%0Aswap%20unit%20(left).png?raw=true)
+![bg 100%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/F1_Pic/Transpose%20unit.png?raw=true)
+
+---
+#### Four-step NTT unit
+![bg 100%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/F1_Pic/Transpose%20unit%20(right)%20and%20its%20component%20quadrant-%0Aswap%20unit%20(left).png?raw=true)
+![bg 100%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/F1_Pic/Transpose%20unit.png?raw=true)
