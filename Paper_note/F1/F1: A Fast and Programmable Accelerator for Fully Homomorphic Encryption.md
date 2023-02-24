@@ -7,11 +7,11 @@ backgroundColor: #fff
 paginate: true
 ---
 
-## Title: F1: A Fast and Programmable Accelerator for Fully Homomorphic Encryption
+##  F1: A Fast and Programmable Accelerator for Fully Homomorphic Encryption
 ###### *(2021 MICRO)*
 ---
 ### Introduction
-#### Challenges
+#### Characters
 - Complex operations on long vectors: modular arithmetic, several thousan elements
 - Regular computation: all operations are known ahead of time, VLIM
 - Challenging data movement: large amounts (tens of MBs) of data; encrypting data increase its size(50X); data in long vectors
@@ -139,7 +139,7 @@ FUs process vectors of configurable length N using a fixed number of vector lane
 ---
 ![bg right 100%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/F1_Pic/F1%20architecture.png?raw=true)
 ###### Static scheduling(programs are regular):
-- VLIW processors?
+- VLIW processors
 - FUs: no stalling logic
 - Memory: no conflicts
 - On-chip network: use switch change configuration
@@ -187,17 +187,9 @@ It clusters operations to improve reuse and translates them down to instruction.
 - data transfers decoupled from computation
 - minmize off-chip data transfers
 - achieve good parallelism
-
----
-It does not consider on-chip data movement, and simply treats all functional units as being directly connected to the scratchpad.
-
-It considers instructions ready if their inputs are available in the
-scratchpad, and follows instruction priority among ready ones. To
-schedule loads, we assign each load a priority
+  
 $p(load) = max\{p(u)|u ∈ users(load)\}$
-then greedily issue loads as bandwidth becomes available. When
-issuing an instruction, we must ensure that there is space to store
-its result. We can often replace a dead value.
+
 
 ---
 #### Cycle-level scheduling(constrained by its input schedule's off-chip data movement)
