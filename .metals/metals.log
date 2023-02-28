@@ -1,0 +1,20 @@
+2023.02.26 23:23:00 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/meng/Paper-Management/.metals/lsp.trace.json or /home/meng/.cache/metals/lsp.trace.json
+2023.02.26 23:23:00 INFO  logging to file /home/meng/Paper-Management/.metals/metals.log
+2023.02.26 23:23:00 INFO  Started: Metals version 0.11.10 in workspace '/home/meng/Paper-Management' for client Visual Studio Code 1.75.1.
+SLF4J: No SLF4J providers were found.
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See https://www.slf4j.org/codes.html#noProviders for further details.
+SLF4J: Class path contains SLF4J bindings targeting slf4j-api versions 1.7.x or earlier.
+SLF4J: Ignoring binding found at [jar:file:/home/meng/.cache/coursier/v1/https/repo1.maven.org/maven2/com/outr/scribe-slf4j_2.13/3.10.5/scribe-slf4j_2.13-3.10.5.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See https://www.slf4j.org/codes.html#ignoredBindings for an explanation.
+2023.02.26 23:23:00 INFO  time: initialize in 0.62s
+2023.02.26 23:23:01 WARN  Build server is not auto-connectable.
+2023.02.26 23:23:01 WARN  no build tool detected in workspace '/home/meng/Paper-Management'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+2023.02.26 23:23:01 WARN  no build target for: /home/meng/code/chisel/chisel-NTT/src/main/scala/NTT/AddressGenerator.scala
+2023.02.26 23:23:02 INFO  no build target found for /home/meng/code/chisel/chisel-NTT/src/main/scala/NTT/AddressGenerator.scala. Using presentation compiler with project's scala-library version: 3.2.1
+2023.02.26 23:23:03 INFO  time: code lens generation in 1.69s
+2023.02.26 23:23:03 INFO  time: code lens generation in 1.69s
+2023.02.26 23:23:05 WARN  no build target for: /home/meng/code/chisel/chisel-NTT/src/main/scala/NTT/AddressGenerator.scala
+Feb 26, 2023 11:26:27 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+2023.02.26 23:41:35 INFO  shutting down Metals
