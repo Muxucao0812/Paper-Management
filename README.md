@@ -1,2 +1,2 @@
-# Paper-Management
-This is a repo about the paper
+# Paper Management
+FHE paper management
