@@ -12,29 +12,70 @@ paginate: true
 ---
 ### Methodology
 #### NTT-fusion
-![bg right 100%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/Poseidon_Pic/NTT_fusion.jpeg?raw=true)
-
+![bg right 80%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/Poseidon_Pic/NTT_fusion.jpeg?raw=true)
+- radix based (radix = $2^k$) FFT idea
+radix 2:  mult: $N/2 * log2^N$ add:$N* log2^N$
+radix 4: mult:$(3/4)N*log4^N$ add:$2N* log4^N$
+radix 8: mult: add
+improve speed but bring additional overhead 
 
 ---
 #### HFAuto
+If X = ⌊{a mod (C ∗ R)}/C⌋, where a,C, and R are positive integers. Then, X = ⌊a/C⌋ mod R
 
 ---
 ### FHE ACCELERATOR-POSEIDON
 #### Overall Architecture
 ![bg right 100%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/Poseidon_Pic/Poseidon%20architecture.jpeg?raw=true)
+- scratchpad and high bandwidth memory, computing cores(cascade MA and MM cores)
+- decompose higher level operations into basic operations to maximize parallelism
+
+---
+#### Memory System
+![bg right 100%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/Poseidon_Pic/Poseidon%20architecture.jpeg?raw=true)
+- HBM architecture involves two HBM2 stacks, which has 16 channels. Each channel is 64 bit with bit rate of up to 1800Mbps，provides 460GB/s
+
+---
+#### Memory System
+![bg right 100%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/Poseidon_Pic/Poseidon%20architecture.jpeg?raw=true)
+- stage1:data loaded from DDR to HBM via PCIe
+- stage2:HBM transfers the data to the reg and BRAM
+- stage3:the cores obtain the data from the scratchpad to accomplish computation and write back
+
+
 
 ---
 #### Computational Cores
 ##### MA/MM
 ![bg right 100%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/Poseidon_Pic/MA:MM%20core%20architecture.jpeg?raw=true)
+- MA/MM: MA : two polynomials element-wise add/mult and obtain the modulo result
+__fine-grained calculation module__
+![w:320 h:80](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/Poseidon_Pic/MM:MA.jpeg?raw=true?raw=true)
+![w:320 h:130](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/Poseidon_Pic/ModMult.jpeg?raw=true)
 
 ---
 #### RNSconv
 ![bg right 100%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/Poseidon_Pic/RNSconv%20architecture.jpeg?raw=true)
+- accelerate $Keyswitch$ though __Modup__ and __Moddown__ operation
+- Modup: vector-scalar multiplication, element-wise accumulation
+- Moddown: vector subtraction, vector-scalar multiplication
+
+---
+#### RNSconv
+![bg right 100%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/Poseidon_Pic/RNSconv%20architecture.jpeg?raw=true)
+- fetches two groups of data from the input buffer and takes the result as the input of the MM core to complete Modup
+- takes the result as the input of MA core to complete Moddown
 
 ---
 #### NTT/INTT
+adopt radix 8 NTT
+- Conventional NTT require $log2^8$=3 phases with 24 unfused TAMs in total
+- taking 8 operands as input: 1 phase with 8 fused TAMs
+
+---
+#### Data access pattern
 ![bg right 100%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/Poseidon_Pic/Data%20access%20pattern%20in%20Poseidon.jpeg?raw=true)
+- phases required change from 12 to 4($(log2^{4096})/3$)
 
 ---
 #### Data access pattern
