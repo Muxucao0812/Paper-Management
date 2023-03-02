@@ -12,14 +12,15 @@ paginate: true
 ---
 ### Methodology
 #### NTT-fusion
-![bg right 80%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/Poseidon_Pic/NTT_fusion.jpeg?raw=true)
+![bg right 80%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/Poseidon_Pic/radix_4.jpeg?raw=true)
 - radix based (radix = $2^k$) FFT idea
 radix 2:  mult: $N/2 * log2^N$ add:$N* log2^N$
 radix 4: mult:$(3/4)N*log4^N$ add:$2N* log4^N$
-radix 8: mult: add
+radix 8: mult:$(7/8)N*log8^N$ add：$4N* log8^N$
 improve speed but bring additional overhead 
 
 ---
+![w:820 h:330](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/Poseidon_Pic/NTT_fusion.jpeg?raw=true)
 #### HFAuto
 If X = ⌊{a mod (C ∗ R)}/C⌋, where a,C, and R are positive integers. Then, X = ⌊a/C⌋ mod R
 
@@ -74,16 +75,30 @@ adopt radix 8 NTT
 
 ---
 #### Data access pattern
-![bg right 100%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/Poseidon_Pic/Data%20access%20pattern%20in%20Poseidon.jpeg?raw=true)
+![bg right 100%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/Poseidon_Pic/Data%20access%20pattern%20comparison.jpeg?raw=true)
 - phases required change from 12 to 4($(log2^{4096})/3$)
+- conventional NTT offset $2^{iter-1}$,Poseidon offset $2^{(iter-1)*k}$
 
 ---
 #### Data access pattern
-![bg right 100%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/Poseidon_Pic/Data%20access%20pattern%20comparison.jpeg?raw=true)
+![bg right 100%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/Poseidon_Pic/Data%20access%20pattern%20in%20Poseidon.jpeg?raw=true)
+- iteration 1:load with index 0-7,8-15,...4088-4095
+- iteration 2:load with fixed offset(index 0,8,16,24,32,40..)
+- iteration 3: offset is 64 because it reorder the index for the next phase
+
+
 
 ---
 #### Automorphism
 ![bg  100%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/Poseidon_Pic/Automorphism%20architecture%20in%20Poseidon.jpeg?raw=true)
+
+---
+#### Automorphism
+
+- stage 1: $row_i$ to $row_{ik mode R}$. Read 512 data per cycle from BRAMS according to the address selection circuit and write them to FIFO.
+- stage 2: $FIFO_{(i,k)}$ to $FIFO_{(i+jk/C mod R,k)}$. This stage cyclically shifts the data in each FIFO
+- stage 3: Switching data dimension. We use a similar idea with the memory access pattern of the NTT core to map the physical row data to the logical rows, and realize the two- dimensional data access on BRAMs.
+- stage 4: $column_i$ to $column_{ikmod C}$. This stage is similar to Stage 1, where the data in column i will be read and write to the $column_{ik mod C}$.
 
 ---
 ### EVALUATION
@@ -122,11 +137,11 @@ Bootstrapping operations in total during one inference.
 
 ---
 ##### Poseidon Specifics
-![bg right 100%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/Poseidon_Pic/parameter%20selection%20-k.jpeg?raw=true)
+![bg  60%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/Poseidon_Pic/parameter%20selection%20-k.jpeg?raw=true)
 
 ---
 ##### HFAuto
-![bg right 100%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/Poseidon_Pic/resource%20and%20performance.jpeg?raw=true)
+![bg  70%](https://github.com/Muxucao0812/Paper-Management/blob/main/Pic/Poseidon_Pic/resource%20and%20performance.jpeg?raw=true)
 
 
 ---
